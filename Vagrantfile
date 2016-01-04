@@ -12,8 +12,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   config.vm.define "restapp" do |restapp|
 	  restapp.vm.provider "docker" do |d|
-	    d.image = "tomcatwithapp"
-	    d.ports = ["80:8080"]
+	    d.image = "feedrestapp"
+
 	    d.link("database:database")
 	    d.name = "restapp"
 	  end
@@ -21,7 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "mvcapp" do |mvcapp|
 	  mvcapp.vm.provider "docker" do |d|
-	    d.image = "tomcatwithmvcapp"
+	    d.image = "feedwebapp"
 	    d.ports = ["8081:8080"]
 	    d.link("restapp:restapp")
 	  end
